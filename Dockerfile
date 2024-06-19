@@ -1,24 +1,23 @@
-# Dockerfile
-
-# Használjuk a Node.js alapú image-t
+# Use an official Node runtime as a parent image
 FROM node:14
 
-# Állítsuk be a munkakönyvtárat a konténerben
-WORKDIR /usr/src/app
+# Set the working directory
+WORKDIR /app
 
-# Másoljuk át a szükséges fájlokat a konténerbe
+# Copy the package.json and package-lock.json files
 COPY package*.json ./
-COPY tsconfig.json ./
-COPY src ./src
 
-# Telepítsük a szükséges npm csomagokat
+# Install dependencies
 RUN npm install
 
-# Fordítsuk le a TypeScript forrásfájlokat
+# Copy the rest of the application code
+COPY . .
+
+# Compile TypeScript to JavaScript
 RUN npm run build
 
-# Tegyük elérhetővé a 9876-os portot
+# Expose the port the app runs on
 EXPOSE 9876
 
-# Indítsuk el az alkalmazást
-CMD ["node", "./dist/server.js"]
+# Run the application
+CMD ["node", "dist/index.js"]
