@@ -28,9 +28,9 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ github.repository_owner }}/nexofox-test:latest
+        tags: ghcr.io/${{ github.repository_owner | toLowerCase }}/nexofox-test:latest
 
     - name: Docker Metadata
       uses: docker/metadata-action@v3
       with:
-        images: ghcr.io/${{ github.repository_owner }}/nexofox-test
+        images: ghcr.io/${{ github.repository_owner | toLowerCase }}/nexofox-test
