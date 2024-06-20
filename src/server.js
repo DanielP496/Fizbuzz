@@ -1,5 +1,5 @@
 "use strict";
-// src/server.ts
+
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -7,7 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 9876;
-// FizzBuzz function
+
 function fizzBuzz(from, to) {
     const result = [];
     for (let i = from; i <= to; i++) {
@@ -26,7 +26,7 @@ function fizzBuzz(from, to) {
     }
     return result;
 }
-// Express route
+
 app.get('/fizzbuzz', (req, res) => {
     const from = parseInt(req.query.from);
     const to = parseInt(req.query.to);
@@ -36,7 +36,7 @@ app.get('/fizzbuzz', (req, res) => {
     const result = fizzBuzz(from, to);
     res.json({ result });
 });
-// Start server
+
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });

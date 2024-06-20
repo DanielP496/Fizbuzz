@@ -1,11 +1,11 @@
-// src/server.ts
+
 
 import express, { Request, Response } from 'express';
 
 const app = express();
 const PORT = process.env.PORT || 9876;
 
-// FizzBuzz function
+
 function fizzBuzz(from: number, to: number): string[] {
   const result: string[] = [];
   for (let i = from; i <= to; i++) {
@@ -22,7 +22,7 @@ function fizzBuzz(from: number, to: number): string[] {
   return result;
 }
 
-// Express route
+
 app.get('/fizzbuzz', (req: Request, res: Response) => {
   const from = parseInt(req.query.from as string);
   const to = parseInt(req.query.to as string);
@@ -35,7 +35,7 @@ app.get('/fizzbuzz', (req: Request, res: Response) => {
   res.json({ result });
 });
 
-// Start server
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
