@@ -10,6 +10,9 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
+# Install TypeScript globally
+RUN npm install -g typescript
+
 # Copy the rest of the application code
 COPY . .
 
@@ -20,4 +23,4 @@ RUN npm run build
 EXPOSE 9876
 
 # Run the application
-CMD ["node", "dist/index.js"]
+CMD ["node", "dist/server.js"]
