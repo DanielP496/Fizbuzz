@@ -21,9 +21,10 @@ function fizzBuzz(from: number, to: number): string[] {
   return result;
 }
 
-app.get('/fizzbuzz/:from/:to', (req: Request, res: Response) => {
-  const from = parseInt(req.params.from);
-  const to = parseInt(req.params.to);
+
+app.get('/fizzbuzz', (req: Request, res: Response) => {
+  const from = parseInt(req.query.from as string);
+  const to = parseInt(req.query.to as string);
 
   if (isNaN(from) || isNaN(to)) {
     return res.status(400).json({ error: 'Invalid parameters. Please provide valid "from" and "to" values.' });
@@ -34,5 +35,5 @@ app.get('/fizzbuzz/:from/:to', (req: Request, res: Response) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}/fizzbuzz/1/20`);
+  console.log(`Server is running on http://localhost:${PORT}/fizzbuzz?from=1&to=20`);
 });
